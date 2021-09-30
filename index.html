@@ -14,11 +14,11 @@
         <h2 class="title block" style="margin: 10% 0 0 0;">Weather Forecast at a glance!</h2>
         <p class="block">Type in a location you would like to get weather information on, and see the magic happen!</p>
 
-        <form class="columns is-mobile is-variable">
-                <input id="searchField" class="input is-primary column is-four-fifths" type="text" placeholder="Search location...">
-                <button id="searchButton" class="button is-primary column" type="submit">Search</button>
-        </form>
-
+        <form class="is-mobile is-variable">
+                <input id="searchField" class="input is-primary" type="text" placeholder="Search location...">
+                <button id="searchButton" class="button is-primary" type="submit">Search</button>
+                <button id="userLocation" class="button is-primary" type="submit">Get my location</button>
+            </form>
         <div class="tabs is-toggle is-toggle-rounded is-fullwidth">
             <ul>
                 <li class="is-active">
@@ -27,7 +27,7 @@
                         <span>Current</span>
                     </a>
                 </li>
-                <li>
+                <li class="">
                     <a>
                         <span class="icon is-small"></span>
                         <span>6 Hours</span>
@@ -41,29 +41,9 @@
                 </li>
             </ul>
         </div>
-        <section class="columns" id="forecastContainer">
-            <div class="card column is-one-third">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            <p class="title is-4">Location Name</p>
-                            <p class="subtitle is-6">Weather Status</p>
-                        </div>
-                    </div>
+        <div class="columns" id="forecastContainer">
             
-                    <div class="content">
-                        Current Temperature and forecast</a>.
-                        <br>
-                        <time datetime="2016-1-1">Date and time</time>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
 
     <script src="index.js" type="module"></script>
