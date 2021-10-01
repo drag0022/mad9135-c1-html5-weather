@@ -123,6 +123,7 @@ function selectUI(forecast) {
 			case 1:
 				//grab hourly forecasts array
 				const forecastSixH = forecast.hourly;
+				forecastSixH.splice(6);
 				document.getElementById('forecastContainer').innerHTML = '';
 				//build UI
 				buildUI(forecastSixH);
@@ -130,6 +131,7 @@ function selectUI(forecast) {
 			//user is in '6 Days' tab
 			case 2:
 				const forecastSixD = forecast.daily;
+				forecastSixD.splice(6);
 				// clear prev content
 				document.getElementById('forecastContainer').innerHTML = '';
 				//build UI
@@ -152,19 +154,17 @@ function buildUI(forecasts) {
 	//when we are on Current tab, the forecasts variable is not an array
 	if (Array.isArray(forecasts)) {
 		forecasts.forEach((forecast) => {
-			if (counter < 6) {
-				counter++;
-				const forecastContainer = document.getElementById('forecastContainer');
-				//create container outside document fragment
-				const cardContainer = document.createElement('div');
-				cardContainer.classList.add('card', 'column', 'is-one-third');
+			const forecastContainer = document.getElementById('forecastContainer');
+			//create container outside document fragment
+			const cardContainer = document.createElement('div');
+			cardContainer.classList.add('card', 'column', 'is-one-third');
 
-				const df = new DocumentFragment();
-				let icon = forecast.weather[0].icon;
-				const mainDesc = forecast.weather[0].main;
-				const feelsLike = forecast.feels_like.day || forecast.feels_like;
-				const temp = forecast.temp.day || forecast.temp;
-				cardContainer.innerHTML = `
+			const df = new DocumentFragment();
+			let icon = forecast.weather[0].icon;
+			const mainDesc = forecast.weather[0].main;
+			const feelsLike = forecast.feels_like.day || forecast.feels_like;
+			const temp = forecast.temp.day || forecast.temp;
+			cardContainer.innerHTML = `
 					<div class="card-image">
 							<figure class="image is-4by3">
 								<img src="https://openweathermap.org/img/w/${icon}.png" alt="weather icon">
@@ -187,9 +187,8 @@ function buildUI(forecasts) {
 						</div>
 				`;
 
-				df.append(cardContainer);
-				forecastContainer.append(cardContainer);
-			}
+			df.append(cardContainer);
+			forecastContainer.append(cardContainer);
 		});
 	} else {
 		const forecastContainer = document.getElementById('forecastContainer');
